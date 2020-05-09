@@ -40,7 +40,7 @@ export const mainListItems = (
   <div>
     {
       [
-        {text: 'Camaras', to: '/app/cams', icon: <PhotoCameraIcon/>},
+        {text: 'Cámaras', to: '/app/cams', icon: <PhotoCameraIcon/>},
       ].map(elementRenderer)
     }
   </div>
