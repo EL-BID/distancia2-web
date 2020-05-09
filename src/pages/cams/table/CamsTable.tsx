@@ -49,7 +49,7 @@ const CamsTable: React.FC = () => {
     // eslint-disable-next-line
   }, [camStore.message])
 
-  return ( useObserver( () => (
+  return useObserver( () => (
     <>
       <MUIDataTable
         title="Cámaras"
@@ -67,8 +67,8 @@ const CamsTable: React.FC = () => {
         message={camStore.message}
       />
     </>
-    ))
-  )
+  ))
+
 }
 
 export default CamsTable

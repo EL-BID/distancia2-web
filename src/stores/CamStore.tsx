@@ -43,6 +43,32 @@ export default class CamStore {
   }
 
   @action
+  getCam = async(camId: number) => {
+    const { client } = this.rootStore
+    this.state = State.PENDING
+
+    try {
+      const response = await client.get<Cam>(`/cams/${camId}/`)
+
+      runInAction(() => {
+        this.state = State.DONE
+        this.message = ''
+        this.errorDetails = {}
+        this.instance = response.data
+      })
+
+    } catch(error) {
+      console.log(error.message)
+      runInAction(() => {
+        this.state = State.DONE
+        this.message = 'No se pudo conectar al servidor'
+        this.errorDetails = {error: ['true']}
+        this.instance = undefined
+      })
+    }
+  }
+
+  @action
   clearState = () => {
     this.errorDetails = {}
     this.message = ''
