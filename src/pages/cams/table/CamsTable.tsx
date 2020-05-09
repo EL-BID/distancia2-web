@@ -6,12 +6,19 @@ import MUIDataTable, { MUIDataTableOptions } from 'mui-datatables'
 
 import { useStore } from 'index'
 import { ActionHandler } from 'interfaces/Common'
+import Snackbar from 'components/SnackbarAlert'
 import LoadingOverlay from 'components/LoadingOverlay'
 import { getColumnsDef } from './columnsDefinition'
 
 const CamsTable: React.FC = () => {
   const { cam: camStore } = useStore()
   const history = useHistory()
+  const [isSnackOpen, setIsSnackOpen] = React.useState(false)
+
+  const handleSnackClose = (event: any, reason: string = 'clickaway') => {
+    camStore.clearState()
+    setIsSnackOpen(false)
+  }
 
   const onAction: ActionHandler = (camId, action) => {
     switch(action) {
@@ -34,6 +41,14 @@ const CamsTable: React.FC = () => {
     // eslint-disable-next-line
   }, [])
 
+  React.useEffect(() => {
+    if (camStore.message.length > 0) {
+      setIsSnackOpen(true)
+    }
+
+    // eslint-disable-next-line
+  }, [camStore.message])
+
   return ( useObserver( () => (
     <>
       <MUIDataTable
@@ -42,7 +57,15 @@ const CamsTable: React.FC = () => {
         options={tableOptions}
         columns={columns}
       />
+
       <LoadingOverlay pending={camStore.stateIsPending}/>
+      <Snackbar
+        open={isSnackOpen}
+        autoHideDuration={1000}
+        onClose={handleSnackClose}
+        severity={camStore.isErrorMessage ? 'error' : 'success'}
+        message={camStore.message}
+      />
     </>
     ))
   )

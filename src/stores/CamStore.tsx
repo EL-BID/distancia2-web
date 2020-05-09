@@ -32,19 +32,29 @@ export default class CamStore {
       })
 
     } catch(error) {
-      console.log(error)
-      // const firstError: ErrorDetail = error.graphQLErrors[0]
+      console.log(error.message)
       runInAction(() => {
         this.state = State.DONE
-        // this.message = firstError.message
-        // this.errorDetails = firstError.extensions?.invalidArgs || {}
+        this.message = 'No se pudo conectar al servidor'
+        this.errorDetails = {error: ['true']}
         this.cams = []
       })
     }
   }
 
+  @action
+  clearState = () => {
+    this.errorDetails = {}
+    this.message = ''
+  }
+
   @computed
   get stateIsPending() {
     return this.state === State.PENDING
+  }
+
+  @computed
+  get isErrorMessage(): boolean {
+    return Object.keys(this.errorDetails).length > 0
   }
 }
