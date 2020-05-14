@@ -34,10 +34,10 @@ const CamDetail: React.FC = () => {
   return useObserver( () => (
     <>
       { camStore.instance && <>
-      <Typography variant="h4" component="h4" gutterBottom>
-        {camStore.instance.name}
-      </Typography>
-      <img src={camStore.instance.image_stream} />
+        <Typography variant="h4" component="h4" gutterBottom>
+          Cámara: {camStore.instance.name}
+        </Typography>
+        <img src={camStore.instance.image_stream} alt="streaming doesn't working"/>
       </> }
 
       <LoadingOverlay pending={camStore.stateIsPending}/>
