@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 
 import { 
   ButtonGroup,
@@ -19,6 +20,8 @@ export const booleanColumn = (value: boolean) => (value ?
 )
 
 export const listStringColumn = (value: [string]) => value.join(', ')
+
+export const formatDateTimeColumn =(value: string) => value && moment(value).format('YYYY-MM-DD HH:mm')
 
 export const camsTableActionsColumn = (onAction: ActionHandler) => (_: any, { rowData }: any) => {
   return (

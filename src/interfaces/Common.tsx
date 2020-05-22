@@ -24,3 +24,10 @@ export interface ErrorDetail {
 export interface ActionHandler {
   (id: string, action: string): void
 }
+
+export interface Paginator<T> {
+  count: number;
+  next: number | null;
+  previous: number | null;
+  results: [T];
+}

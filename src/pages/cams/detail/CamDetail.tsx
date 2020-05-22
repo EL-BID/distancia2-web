@@ -2,14 +2,21 @@ import React from 'react'
 import { useObserver } from 'mobx-react-lite'
 import { useParams } from 'react-router-dom'
 
-import { useStore } from 'index'
-import Snackbar from 'components/SnackbarAlert'
+import {
+  Typography, 
+  Grid
+} from '@material-ui/core'
+import Plot from 'react-plotly.js'
+
 import LoadingOverlay from 'components/LoadingOverlay'
-import { Typography } from '@material-ui/core'
+import Snackbar from 'components/SnackbarAlert'
+import { useStore } from 'index'
+import useStyles from './styles'
 
 const CamDetail: React.FC = () => {
   const { cam: camStore } = useStore()
   const { camId } = useParams()
+  const classes = useStyles()
   const [isSnackOpen, setIsSnackOpen] = React.useState(false)
 
   const handleSnackClose = (event: any, reason: string = 'clickaway') => {
@@ -31,14 +38,33 @@ const CamDetail: React.FC = () => {
     // eslint-disable-next-line
   }, [camStore.message])
 
+  React.useEffect(() => {
+    let id = setInterval(() => camStore.listRecords(camId), 5000);
+
+    return () => clearInterval(id);
+    // eslint-disable-next-line
+  }, []);
+
   return useObserver( () => (
     <>
-      { camStore.instance && <>
-        <Typography variant="h4" component="h4" gutterBottom>
-          Cámara: {camStore.instance.name}
-        </Typography>
-        <img src={camStore.instance.image_stream} alt="streaming doesn't working"/>
-      </> }
+      { camStore.instance &&
+        <Grid container spacing={2}>
+          <Grid item md={6}>
+            <Typography variant="h4" component="h4" gutterBottom>
+              Cámara: {camStore.instance.name}
+            </Typography>
+            <img src={camStore.instance.image_stream} alt="streaming doesn't working"/>
+          </Grid>
+          <Grid item md={6}>
+            <Plot
+              className={classes.plot}
+              data={camStore.plotDetailBreakingPercent}
+              layout={{autosize:true}}
+              useResizeHandler
+            />
+          </Grid>
+        </Grid>
+      }
 
       <LoadingOverlay pending={camStore.stateIsPending}/>
       <Snackbar
