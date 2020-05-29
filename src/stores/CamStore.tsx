@@ -34,7 +34,6 @@ export default class CamStore {
         this.errorDetails = {}
         this.cams = response.data.results
       })
-      this.listRecords()
 
     } catch(error) {
       console.log(error.message)
@@ -80,7 +79,7 @@ export default class CamStore {
             }
 
             temp[indexCam].records = [...records, ...(temp[indexCam].records || [])]
-            temp[indexCam].lastRecord = records[0]
+            temp[indexCam].last_record = records[0]
 
             const recordsLength = temp[indexCam].records?.length || 0
             if (recordsLength > 100) {
@@ -133,7 +132,6 @@ export default class CamStore {
         this.errorDetails = {}
         this.instance = response.data
       })
-      this.listRecords(camId)
 
     } catch(error) {
       console.log(error.message)

@@ -29,5 +29,5 @@ export interface CamChannel {
   state: CamState;
   records?: CamRecord[];
   // alarms?: CamAlarm[];
-  lastRecord?: CamRecord;
+  last_record?: CamRecord;
 }

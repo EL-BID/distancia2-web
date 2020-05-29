@@ -52,6 +52,10 @@ const CamsTable: React.FC = () => {
 
   React.useEffect(() => {
     camStore.listCams()
+    camStore.listRecords()
+    let id = setInterval(() => camStore.listRecords(), 5000);
+
+    return () => clearInterval(id);
 
     // eslint-disable-next-line
   }, [])
@@ -63,13 +67,6 @@ const CamsTable: React.FC = () => {
 
     // eslint-disable-next-line
   }, [camStore.message])
-
-  React.useEffect(() => {
-    let id = setInterval(() => camStore.listRecords(), 5000);
-
-    return () => clearInterval(id);
-    // eslint-disable-next-line
-  }, []);
 
   // const dataMap: Partial<PlotCoordinate>[] = [
   //   {

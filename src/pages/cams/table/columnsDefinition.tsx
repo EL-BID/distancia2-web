@@ -28,22 +28,22 @@ export const getColumnsDef = (onAction: ActionHandler): MUIDataTableColumn[] => 
       }
   },
   {
-    name: 'lastRecord.date',
+    name: 'last_record.date',
     label: 'Última Conexión',
     options: {
       customBodyRender: formatDateTimeColumn
     }
   },
   {
-    name: 'lastRecord.amount_people',
+    name: 'last_record.amount_people',
     label: 'Cantidad de personas'
   },
   {
-    name: 'lastRecord.breaking_secure_distance',
+    name: 'last_record.breaking_secure_distance',
     label: 'Rompiendo distaciamiento'
   },
   {
-    name: 'lastRecord.average_distance',
+    name: 'last_record.average_distance',
     label: 'Distanciamiento promedio',
     options: {
       customBodyRender: (value: number) => value && `${value}m`

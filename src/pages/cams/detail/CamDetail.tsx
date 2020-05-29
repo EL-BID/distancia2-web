@@ -26,6 +26,10 @@ const CamDetail: React.FC = () => {
 
   React.useEffect(() => {
     camStore.getCam(camId)
+    camStore.listRecords(camId)
+    let id = setInterval(() => camStore.listRecords(camId), 5000);
+
+    return () => clearInterval(id);
 
     // eslint-disable-next-line
   }, [ camId ])
@@ -37,13 +41,6 @@ const CamDetail: React.FC = () => {
 
     // eslint-disable-next-line
   }, [camStore.message])
-
-  React.useEffect(() => {
-    let id = setInterval(() => camStore.listRecords(camId), 5000);
-
-    return () => clearInterval(id);
-    // eslint-disable-next-line
-  }, []);
 
   return useObserver( () => (
     <>
