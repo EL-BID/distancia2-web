@@ -2,7 +2,7 @@ import { observable, action, runInAction, computed } from 'mobx'
 import { groupBy } from 'lodash'
 
 import RootStore from "./RootStore";
-import { CamChannel, CamRecord } from 'interfaces/Cam';
+import { CamChannel, CamRecord, Coordinates } from 'interfaces/Cam';
 import { State, InvalidInput, Paginator } from "interfaces/Common";
 import { PlotData } from 'plotly.js';
 
@@ -12,6 +12,7 @@ export default class CamStore {
   @observable message: string = ''
   @observable errorDetails: InvalidInput = {}
   @observable cams: CamChannel[] = []
+  @observable geoCenter: Coordinates = { lon: 0, lat: 0 }
   @observable lastDate?: string
   @observable instance?: CamChannel
 
@@ -33,6 +34,7 @@ export default class CamStore {
         this.message = ''
         this.errorDetails = {}
         this.cams = response.data.results
+        this.geoCenter = this.calculateGeoCenter(response.data.results)
       })
 
     } catch(error) {
@@ -142,6 +144,25 @@ export default class CamStore {
         this.instance = undefined
       })
     }
+  }
+
+  calculateGeoCenter = (cams: CamChannel[]): Coordinates => {
+    if (cams.length === 0) {
+      return {lon: 0, lat: 0}
+    }
+
+    const sum = cams.reduce( (acum, item) => [acum[0] + item.longitude, acum[1] + item.latitude], [0, 0])
+    return {lon: sum[0] / cams.length, lat: sum[1] / cams.length}
+  }
+
+  @computed
+  get plotTableMap(): Partial<PlotData>[] {
+    return  [{
+      lon: this.cams.map(cam => cam.longitude),
+      lat: this.cams.map(cam => cam.latitude),
+      z : this.cams.map(({ last_record }) => (last_record as CamRecord).breaking_secure_distance),
+      type: 'densitymapbox',
+    }]
   }
 
   @computed

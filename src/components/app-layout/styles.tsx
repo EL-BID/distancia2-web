@@ -95,4 +95,4 @@ export default makeStyles(theme => ({
   fixedHeight: {
     height: 240,
   },
-}))
+}), {index: 1})

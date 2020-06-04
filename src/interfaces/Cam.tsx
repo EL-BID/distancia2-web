@@ -5,6 +5,11 @@ export enum CamState {
   FAILED = 'failed'
 }
 
+export interface Coordinates {
+  lon: number;
+  lat: number;
+}
+
 // export interface CamAlarm {
 
 // }
@@ -22,6 +27,8 @@ export interface CamChannel {
   id: number;
   name: string;
   enabled: boolean;
+  longitude: number;
+  latitude: number;
   last_connection: string;
   camera_interface: string;
   image_stream: string;
