@@ -160,7 +160,7 @@ export default class CamStore {
     return  [{
       lon: this.cams.map(cam => cam.longitude),
       lat: this.cams.map(cam => cam.latitude),
-      z : this.cams.map(({ last_record }) => (last_record as CamRecord).breaking_secure_distance),
+      z : this.cams.map(({ last_record }) => last_record?.breaking_secure_distance || 0),
       type: 'densitymapbox',
     }]
   }
