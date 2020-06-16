@@ -42,7 +42,7 @@ Ver anexo 2
 
 ## Licencia
 
-[AM-331-A3 Licencia de Software](https://gitlab.com/josch_san/distancia2-api/LICENSE.md)
+[AM-331-A3 Licencia de Software](https://gitlab.com/josch_san/distancia2-web/LICENSE.md)
 
 ## ¿Cómo contribuir?
 
