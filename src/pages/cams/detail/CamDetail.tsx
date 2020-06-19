@@ -42,6 +42,11 @@ const CamDetail: React.FC = () => {
     // eslint-disable-next-line
   }, [camStore.message])
 
+  const layoutChart = {
+    title: 'Porcetaje de personas incumpliendo distanciamiento',
+    autosize:true,
+  }
+
   return useObserver( () => (
     <>
       { camStore.instance &&
@@ -56,7 +61,7 @@ const CamDetail: React.FC = () => {
             <Plot
               className={classes.plot}
               data={camStore.plotDetailBreakingPercent}
-              layout={{autosize:true}}
+              layout={layoutChart}
               useResizeHandler
             />
           </Grid>

@@ -67,12 +67,18 @@ const CamsTable: React.FC = () => {
   }, [camStore.message])
 
   const layoutMap = {
+    title: 'Número de personas por cámara',
     autosize:true,
     mapbox: {
       style: 'open-street-map',
       center: camStore.geoCenter,
       zoom: mapZoom
     }
+  }
+
+  const layoutChart = {
+    title: 'Porcetaje de personas incumpliendo distanciamiento',
+    autosize:true,
   }
 
   return useObserver( () => (
@@ -94,7 +100,7 @@ const CamsTable: React.FC = () => {
             <Plot
               className={classes.plot}
               data={camStore.plotTableBreakingPercent}
-              layout={{autosize:true}}
+              layout={layoutChart}
               useResizeHandler
             />
           </Card>

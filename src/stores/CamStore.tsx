@@ -169,7 +169,7 @@ export default class CamStore {
   get plotTableBreakingPercent(): Partial<PlotData>[] {
     return this.cams.map(({ name, records }) => ({
       x: records?.map(({ date }) => date),
-      y: records?.map(({ amount_people, breaking_secure_distance }) => breaking_secure_distance / amount_people ),
+      y: records?.map(({ amount_people, breaking_secure_distance }) => breaking_secure_distance / amount_people * 100 ),
       type: 'scatter',
       mode: 'lines',
       name: name,
@@ -184,7 +184,7 @@ export default class CamStore {
   get plotDetailBreakingPercent(): Partial<PlotData>[] {
     return [{
       x: (this.instance as CamChannel).records?.map(({ date }) => date),
-      y: (this.instance as CamChannel).records?.map(({ amount_people, breaking_secure_distance }) => breaking_secure_distance / amount_people ),
+      y: (this.instance as CamChannel).records?.map(({ amount_people, breaking_secure_distance }) => breaking_secure_distance / amount_people * 100 ),
       type: 'scatter',
       mode: 'lines',
       name: this.instance?.name,
