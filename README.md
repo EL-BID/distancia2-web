@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EL-BID_distancia2-web&metric=alert_status)](https://sonarcloud.io/dashboard?id=EL-BID_distancia2-web)
+
 # Distancia2 (Frontend)
 
 Distancia2 es un aplicación que permite analizar vídeo proveniente de cámaras,
