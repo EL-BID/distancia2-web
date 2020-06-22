@@ -1,5 +1,4 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EL-BID_distancia2-web&metric=alert_status)](https://sonarcloud.io/dashboard?id=EL-BID_distancia2-web)
-
 [![Analytics](https://gabeacon.irvinlim.com/UA-4677001-16/distancia2-web/readme?useReferer)](https://github.com/EL-BID/distancia2-web)
 
 # Distancia2 (Frontend)
