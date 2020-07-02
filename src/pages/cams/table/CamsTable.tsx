@@ -69,6 +69,9 @@ const CamsTable: React.FC = () => {
   const layoutMap = {
     title: 'Número de personas por cámara',
     autosize:true,
+    yaxis: {
+      tick0: 0,
+    },
     mapbox: {
       style: 'open-street-map',
       center: camStore.geoCenter,
@@ -79,6 +82,9 @@ const CamsTable: React.FC = () => {
   const layoutChart = {
     title: 'Porcetaje de personas incumpliendo distanciamiento',
     autosize:true,
+    yaxis: {
+      tick0: 0,
+    }
   }
 
   return useObserver( () => (
