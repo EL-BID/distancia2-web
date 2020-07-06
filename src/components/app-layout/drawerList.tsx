@@ -8,8 +8,7 @@ import {
   ListItemText,
 } from '@material-ui/core'
 import {
-  PhotoCamera as PhotoCameraIcon,
-  Settings as SettingsIcon
+  PhotoCamera as PhotoCameraIcon
 } from '@material-ui/icons'
 
 interface ListElement {
@@ -41,8 +40,7 @@ export const mainListItems = (
   <div>
     {
       [
-        {text: 'Cámaras', to: '/app/cams', icon: <PhotoCameraIcon/>},
-        {text: 'Panel Admin', to: '/admin', icon: <SettingsIcon/>},
+        {text: 'Cámaras', to: '/app/cams', icon: <PhotoCameraIcon/>}
       ].map(elementRenderer)
     }
   </div>

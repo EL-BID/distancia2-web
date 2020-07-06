@@ -9,7 +9,8 @@ import {
   Typography,
 } from '@material-ui/core'
 import {
-  Menu as MenuIcon
+  Menu as MenuIcon,
+  Settings as SettingsIcon
 } from '@material-ui/icons'
 
 import useStyles from './styles'
@@ -21,6 +22,7 @@ interface AppHeaderProps {
 
 const Header: React.FC<AppHeaderProps> = ({isDrawerOpen, onDrawerOpen}) => {
   const classes = useStyles()
+  const onSettingsOpen = () => window.open('/admin', "_blank") 
 
   return (
     <AppBar position="absolute" className={clsx(classes.appBar, isDrawerOpen && classes.appBarShift)}>
@@ -38,6 +40,13 @@ const Header: React.FC<AppHeaderProps> = ({isDrawerOpen, onDrawerOpen}) => {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Distancia2
           </Typography>
+          <IconButton
+            color="inherit"
+            edge="end"
+            onClick={onSettingsOpen}
+          >
+            <SettingsIcon/>
+          </IconButton>
         </Toolbar>
       </AppBar>
   )
