@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import {
   AppBar,
   Toolbar,
+  Tooltip,
   IconButton,
   Typography,
 } from '@material-ui/core'
@@ -40,13 +41,15 @@ const Header: React.FC<AppHeaderProps> = ({isDrawerOpen, onDrawerOpen}) => {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Distancia2
           </Typography>
-          <IconButton
-            color="inherit"
-            edge="end"
-            onClick={onSettingsOpen}
-          >
-            <SettingsIcon/>
-          </IconButton>
+          <Tooltip title="Panel de Administración">
+            <IconButton
+              color="inherit"
+              edge="end"
+              onClick={onSettingsOpen}
+            >
+              <SettingsIcon/>
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
   )
