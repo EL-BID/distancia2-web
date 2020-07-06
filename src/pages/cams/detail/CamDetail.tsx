@@ -44,7 +44,7 @@ const CamDetail: React.FC = () => {
   }, [camStore.message])
 
   const layoutChart = {
-    title: 'Porcetaje de personas incumpliendo distanciamiento',
+    title: 'Porcentaje de personas incumpliendo distanciamiento',
     autosize:true,
     yaxis: {
       tick0: 0,
@@ -61,7 +61,7 @@ const CamDetail: React.FC = () => {
               variant="filled"
               severity="warning"
             >
-              La transmisión solo estará disponible por 60 segundos
+              La transmisión solo estará disponible por 5 minutos
             </MuiAlert>
           </Grid>
           <Grid item md={6}>

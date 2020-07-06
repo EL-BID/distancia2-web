@@ -40,7 +40,7 @@ export const getColumnsDef = (onAction: ActionHandler): MUIDataTableColumn[] => 
   },
   {
     name: 'last_record.breaking_secure_distance',
-    label: 'Rompiendo distaciamiento'
+    label: 'Rompiendo distanciamiento'
   },
   {
     name: 'last_record.average_distance',

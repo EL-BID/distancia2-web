@@ -80,7 +80,7 @@ const CamsTable: React.FC = () => {
   }
 
   const layoutChart = {
-    title: 'Porcetaje de personas incumpliendo distanciamiento',
+    title: 'Porcentaje de personas incumpliendo distanciamiento',
     autosize:true,
     yaxis: {
       tick0: 0,
