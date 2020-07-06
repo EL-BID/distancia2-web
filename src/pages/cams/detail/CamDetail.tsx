@@ -3,9 +3,10 @@ import { useObserver } from 'mobx-react-lite'
 import { useParams } from 'react-router-dom'
 
 import {
-  Typography, 
+  Typography,
   Grid
 } from '@material-ui/core'
+import MuiAlert from '@material-ui/lab/Alert'
 import Plot from 'react-plotly.js'
 
 import LoadingOverlay from 'components/LoadingOverlay'
@@ -54,11 +55,23 @@ const CamDetail: React.FC = () => {
     <>
       { camStore.instance &&
         <Grid container spacing={2}>
+          <Grid item md={12}>
+            <MuiAlert
+              elevation={6}
+              variant="filled"
+              severity="warning"
+            >
+              La transmisión solo estará disponible por 60 segundos
+            </MuiAlert>
+          </Grid>
           <Grid item md={6}>
             <Typography variant="h4" component="h4" gutterBottom>
               Cámara: {camStore.instance.name}
             </Typography>
-            <img src={camStore.instance.image_stream} alt="streaming doesn't working"/>
+            <img
+              alt="No hay transmisión disponible"
+              src={camStore.instance.image_stream}
+            />
           </Grid>
           <Grid item md={6}>
             <Plot
