@@ -19,7 +19,7 @@
     "axios": "^0.19.2",
     "mobx": "^5.15.4",
     "mobx-react-lite": "^2.0.6",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "mui-datatables": "^2.14.0",
     "plotly.js": "^1.54.1",
     "react": "^16.13.1",
